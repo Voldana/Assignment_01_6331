@@ -2,7 +2,7 @@
 
 namespace Project.Scripts.Ships
 {
-    public class Pirate : Base
+    public class Pirate : MonoBehaviour
     {
         [SerializeField] private float fieldOfViewAngle = 120f;
         [SerializeField] private float detectionRange = 15f;
@@ -11,7 +11,7 @@ namespace Project.Scripts.Ships
         private Trade targetTradeShip;
         private bool isChasing = false;
 
-        private void Update()
+        /*private void Update()
         {
             if (isChasing && targetTradeShip != null)
             {
@@ -31,7 +31,7 @@ namespace Project.Scripts.Ships
             float randomAngle = Random.Range(0, 360);
             Vector3 offset = new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle), 0) * 10;
             SetTarget(islandCenter.position + offset);
-        }
+        }*/
 
         private void OnTriggerEnter(Collider other)
         {

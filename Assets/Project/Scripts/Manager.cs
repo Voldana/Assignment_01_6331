@@ -21,7 +21,7 @@ namespace Project.Scripts
 
         void Start()
         {
-            trade.SetTarget(harbors[currentHarborIndex].position);
+            // trade.SetTarget(harbors[currentHarborIndex].position);
             UpdateScore(0);
             StartCoroutine(GameTimer());
         }
@@ -31,7 +31,7 @@ namespace Project.Scripts
             score += 10; // Increase score when reaching harbor
             UpdateScore(score);
             currentHarborIndex = (currentHarborIndex + 1) % harbors.Length;
-            ship.SetTarget(harbors[currentHarborIndex].position);
+            // ship.SetTarget(harbors[currentHarborIndex].position);
         }
 
         private IEnumerator GameTimer()

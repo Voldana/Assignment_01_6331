@@ -875,6 +875,10 @@ GameObject:
   - component: {fileID: 3389932}
   - component: {fileID: 2378708}
   - component: {fileID: 6855885875266009637}
+  - component: {fileID: 874601456369047929}
+  - component: {fileID: 206299972272948313}
+  - component: {fileID: 7570037026109578612}
+  - component: {fileID: 1362271726041386718}
   m_Layer: 0
   m_Name: Trading
   m_TagString: Untagged
@@ -963,9 +967,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf445f6e9e74d45b7b9eeb3f60b8a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  arrive: {fileID: 1362271726041386718}
+  seek: {fileID: 206299972272948313}
+  flee: {fileID: 7570037026109578612}
+--- !u!114 &874601456369047929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1095113ba5cfc404fadd8587531f45b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRotation: 2
   maxSpeed: 5
-  acceleration: 2
-  rotationSpeed: 2
+  drag: 0.1
+--- !u!114 &206299972272948313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4f755384ed4a43a97790ef5a0e5b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAcceleration: 2
+  maxAngularAcceleration: 5
+--- !u!114 &7570037026109578612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d96764d666b74c14b164d0d7f82294eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAcceleration: 2
+  maxAngularAcceleration: 5
+--- !u!114 &1362271726041386718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6357f40c84049008d5eb10521c65c58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAcceleration: 2
+  maxAngularAcceleration: 5
+  arrivalRadius: 3
+  slowRadius: 8
 --- !u!1 &177090
 GameObject:
   m_ObjectHideFlags: 0
