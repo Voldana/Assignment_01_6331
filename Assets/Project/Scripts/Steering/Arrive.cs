@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using Unity.VisualScripting;
+using UnityEngine;
 
 namespace Project.Scripts.Steering
 {
@@ -6,6 +8,9 @@ namespace Project.Scripts.Steering
     {
         [SerializeField] private float arrivalRadius = 3f;
         [SerializeField] private float slowRadius = 8f;
+
+        private Action onArrive;
+        private bool arrived;
 
         public override SteeringOutput GetSteering()
         {
@@ -18,14 +23,28 @@ namespace Project.Scripts.Steering
             if (distance < arrivalRadius)
             {
                 result.linear = Vector3.zero;
+                OnArrive();
                 return result;
             }
 
+            arrived = false;
             var targetSpeed = maxAcceleration * (distance / slowRadius);
             targetSpeed = Mathf.Min(targetSpeed, maxAcceleration);
 
             result.linear = direction.normalized * targetSpeed;
             return result;
+        }
+
+        public void SetAction(Action action)
+        {
+            onArrive = action;
+        }
+
+        private void OnArrive()
+        {
+            if (arrived) return;
+            arrived = true;
+            onArrive?.Invoke();
         }
     }
 }
