@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 3320446}
   - component: {fileID: 2321160}
   m_Layer: 0
-  m_Name: SM_Veh_Boat_Medium_01_Hull
+  m_Name: Fishing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

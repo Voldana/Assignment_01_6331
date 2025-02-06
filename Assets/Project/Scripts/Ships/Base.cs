@@ -1,12 +1,15 @@
 using UnityEngine;
+using Zenject;
 
-namespace Ships
+namespace Project.Scripts.Ships
 {
     public class Base : MonoBehaviour
     {
-        public float maxSpeed = 5f;
-        public float acceleration = 2f;
-        public float rotationSpeed = 2f;
+        [Inject] protected SignalBus signalBus;
+        
+        [SerializeField] protected float rotationSpeed = 2f;
+        [SerializeField] protected float acceleration = 2f;
+        [SerializeField] protected float maxSpeed = 5f;
 
         protected Vector3 velocity;
         protected Vector3 targetPosition;
@@ -18,7 +21,7 @@ namespace Ships
 
         protected void Move()
         {
-            Vector3 direction = (targetPosition - transform.position).normalized;
+            var direction = (targetPosition - transform.position).normalized;
             velocity += direction * acceleration * Time.deltaTime;
             velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
             transform.position += velocity * Time.deltaTime;
