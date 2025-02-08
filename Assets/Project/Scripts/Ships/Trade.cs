@@ -53,6 +53,14 @@ namespace Project.Scripts.Ships
         {
             arrive.SetStatus(false);
             seek.SetStatus(false);
+            flee.SetTarget(fleeFrom.transform);
+        }
+
+        public void StopFleeing()
+        {
+            arrive.SetStatus(true);
+            seek.SetStatus(true);
+            flee.SetTarget(null);
         }
 
     }

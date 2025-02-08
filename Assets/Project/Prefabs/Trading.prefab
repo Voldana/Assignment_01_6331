@@ -879,6 +879,7 @@ GameObject:
   - component: {fileID: 206299972272948313}
   - component: {fileID: 7570037026109578612}
   - component: {fileID: 1362271726041386718}
+  - component: {fileID: -6993160243058102350}
   - component: {fileID: 6806556680662589030}
   m_Layer: 0
   m_Name: Trading
@@ -983,8 +984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1095113ba5cfc404fadd8587531f45b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRotation: 2
-  maxSpeed: 5
+  maxRotation: 10
+  maxSpeed: 200
   drag: 0.1
 --- !u!114 &206299972272948313
 MonoBehaviour:
@@ -998,7 +999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4f755384ed4a43a97790ef5a0e5b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 2
+  maxAcceleration: 200
 --- !u!114 &7570037026109578612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,7 +1012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96764d666b74c14b164d0d7f82294eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 2
+  maxAcceleration: 200
 --- !u!114 &1362271726041386718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,9 +1025,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6357f40c84049008d5eb10521c65c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 2
+  maxAcceleration: 50
   arrivalRadius: 3
-  slowRadius: 8
+  slowRadius: 50
+--- !u!114 &-6993160243058102350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885797a5e0b14f268b70e16a8b737dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAcceleration: 150
+  targetAngularSpeed: 150
+  alignRadius: 5
+  slowRadius: 15
 --- !u!136 &6806556680662589030
 CapsuleCollider:
   m_ObjectHideFlags: 0

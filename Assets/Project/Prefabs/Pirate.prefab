@@ -615,7 +615,11 @@ GameObject:
   - component: {fileID: 456082}
   - component: {fileID: 3351120}
   - component: {fileID: 2364486}
+  - component: {fileID: 4327099374662396663}
   - component: {fileID: 4162689225729114686}
+  - component: {fileID: 2323954370599333549}
+  - component: {fileID: 3896424780937798422}
+  - component: {fileID: 451809796893471421}
   m_Layer: 0
   m_Name: Pirate
   m_TagString: Untagged
@@ -693,6 +697,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4327099374662396663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1095113ba5cfc404fadd8587531f45b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxRotation: 20
+  maxSpeed: 50
+  drag: 0.1
 --- !u!114 &4162689225729114686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -705,8 +724,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1199e15141df48b38d769d9315d2ef5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldOfViewAngle: 120
-  detectionRange: 15
+  pursue: {fileID: 3896424780937798422}
+  wander: {fileID: 2323954370599333549}
+--- !u!114 &2323954370599333549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4d068444934db4a4b4177a83d8cf8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAcceleration: 100
+  wanderRadius: 5
+  wanderJitter: 2
+  wanderTarget: {fileID: 0}
+--- !u!114 &3896424780937798422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecec702b500a44bea2585cb1150ce924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAcceleration: 100
+  predictionTime: 2
+--- !u!114 &451809796893471421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885797a5e0b14f268b70e16a8b737dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAcceleration: 150
+  targetAngularSpeed: 150
+  alignRadius: 5
+  slowRadius: 15
 --- !u!1 &154540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,3 +1550,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ba6f9c86d9413fa0d7c550e3ffca86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pirate: {fileID: 4162689225729114686}

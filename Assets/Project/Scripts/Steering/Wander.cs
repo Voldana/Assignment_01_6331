@@ -6,21 +6,22 @@ namespace Project.Scripts.Steering
     {
         [SerializeField] private float wanderRadius = 5f;
         [SerializeField] private float wanderJitter = 2f;
+        [SerializeField] private Transform wanderTarget;
 
-        private Vector3 wanderTarget;
+        private Vector3 wander;
         private void Start()
         {
-            wanderTarget = target.position;
+            wander = wanderTarget.position;
         }
 
         public override SteeringOutput GetSteering()
         {
             var result = new SteeringOutput();
             if (!isActive) return result;
-            wanderTarget += Random.insideUnitSphere * wanderJitter;
-            wanderTarget = wanderTarget.normalized * wanderRadius;
+            wander += Random.insideUnitSphere * wanderJitter;
+            wander = wander.normalized * wanderRadius;
 
-            var worldTarget = transform.position + wanderTarget;
+            var worldTarget = transform.position + wander;
             result.linear = (worldTarget - transform.position).normalized * maxAcceleration;
 
             return result;

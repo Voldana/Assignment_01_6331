@@ -5,8 +5,7 @@ namespace Project.Scripts.Ships
 {
     public class Pirate : MonoBehaviour
     {
-        [SerializeField] private float fieldOfViewAngle = 120f;
-        [SerializeField] private float detectionRange = 15f;
+
         [SerializeField] private Pursue pursue;
         [SerializeField] private Wander wander;
         

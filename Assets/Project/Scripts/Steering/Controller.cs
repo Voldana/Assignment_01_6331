@@ -31,9 +31,9 @@ namespace Project.Scripts.Steering
 
             rotation += totalSteering.angular * Time.deltaTime;
             rotation = Mathf.Clamp(rotation, -maxRotation, maxRotation);
-
+            velocity.y = 0;
             transform.position += velocity * Time.deltaTime;
-            transform.Rotate(Vector3.forward, rotation * Time.deltaTime);
+            transform.Rotate(Vector3.down, rotation * Time.deltaTime);
         }
 
         public Vector3 GetVelocity()

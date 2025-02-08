@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Project.Scripts.Steering
 {
     public class Pursue : Base
     {
         [SerializeField] private float predictionTime = 2f;
-
+        
 
         public override SteeringOutput GetSteering()
         {
