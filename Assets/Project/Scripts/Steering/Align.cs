@@ -8,8 +8,7 @@ namespace Project.Scripts.Steering
         [SerializeField] private float targetAngularSpeed = 5f; // Maximum rotation speed
         [SerializeField] private  float alignRadius = 5f;        // When to start slowing rotation
         [SerializeField] private float slowRadius = 15f;        // Slow down rotation over distance
-
-        private float currentAngularVelocity = 0f;
+        
         private Controller controller;
         private void Start()
         {

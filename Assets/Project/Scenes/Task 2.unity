@@ -566,17 +566,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
-      propertyPath: wanderJitter
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: wanderRadius
-      value: 500
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: wanderTarget
       value: 
       objectReference: {fileID: 980426739}
+    - target: {fileID: 4327099374662396663, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: maxSpeed
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

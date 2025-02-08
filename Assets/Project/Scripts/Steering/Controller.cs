@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 namespace Project.Scripts.Steering
@@ -33,7 +34,10 @@ namespace Project.Scripts.Steering
             rotation = Mathf.Clamp(rotation, -maxRotation, maxRotation);
             velocity.y = 0;
             transform.position += velocity * Time.deltaTime;
-            transform.Rotate(Vector3.down, rotation * Time.deltaTime);
+            
+            if (!(velocity.magnitude > 0.1f)) return;
+            var targetRotation = Quaternion.LookRotation(velocity.normalized);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2.5f);
         }
 
         public Vector3 GetVelocity()
