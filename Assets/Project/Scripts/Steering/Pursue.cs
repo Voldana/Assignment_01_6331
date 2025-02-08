@@ -18,5 +18,6 @@ namespace Project.Scripts.Steering
             result.linear = (futurePosition - transform.position).normalized * maxAcceleration;
             return result;
         }
+        
     }
 }

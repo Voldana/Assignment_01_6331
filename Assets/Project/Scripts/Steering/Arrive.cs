@@ -15,7 +15,7 @@ namespace Project.Scripts.Steering
         public override SteeringOutput GetSteering()
         {
             var result = new SteeringOutput();
-            if (target == null) return result;
+            if (target == null || !isActive) return result;
 
             var direction = target.position - transform.position;
             var distance = direction.magnitude;

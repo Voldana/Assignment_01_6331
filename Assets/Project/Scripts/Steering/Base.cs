@@ -7,12 +7,18 @@ namespace Project.Scripts.Steering
         [SerializeField] protected float maxAcceleration = 2f;
 
         protected Transform target;
+        protected bool isActive;
 
         public abstract SteeringOutput GetSteering();
 
         public void SetTarget(Transform newTarget)
         {
             target = newTarget;
+        }
+
+        public void SetStatus(bool status)
+        {
+            isActive = status;
         }
     }
 

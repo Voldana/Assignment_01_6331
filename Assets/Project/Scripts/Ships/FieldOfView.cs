@@ -5,9 +5,31 @@ namespace Project.Scripts.Ships
 {
     public class FieldOfView : MonoBehaviour
     {
+        [SerializeField] private Pirate pirate;
+
+        private GameObject currentTarget;
+        private bool isPursuing;
+
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(other.gameObject.tag);
+            if (!isPursuing && other.CompareTag("Trading"))
+                TryAndPursue(other.gameObject);
+        }
+
+        private void TryAndPursue(GameObject target)
+        {
+            if (!target.TryGetComponent<Trade>(out var trading)) return;
+            isPursuing = true;
+            trading.StartFleeing(pirate);
+            pirate.StartChasing(target);
+            
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (!isPursuing || !other.gameObject.Equals(currentTarget)) return;
+            isPursuing = false;
+            pirate.StopChasing();
         }
     }
 }

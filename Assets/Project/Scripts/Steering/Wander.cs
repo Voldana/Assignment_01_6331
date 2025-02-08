@@ -16,7 +16,7 @@ namespace Project.Scripts.Steering
         public override SteeringOutput GetSteering()
         {
             var result = new SteeringOutput();
-
+            if (!isActive) return result;
             wanderTarget += Random.insideUnitSphere * wanderJitter;
             wanderTarget = wanderTarget.normalized * wanderRadius;
 

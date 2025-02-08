@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Steering;
+using UnityEngine;
 
 namespace Project.Scripts.Ships
 {
@@ -6,34 +7,20 @@ namespace Project.Scripts.Ships
     {
         [SerializeField] private float fieldOfViewAngle = 120f;
         [SerializeField] private float detectionRange = 15f;
-
-        /*void Start()
-        {
-            gameObject.AddComponent<SteeringController>();
+        [SerializeField] private Pursue pursue;
+        [SerializeField] private Wander wander;
         
-            Wander wander = gameObject.AddComponent<Wander>();
-            wander.island = island;
 
-            Pursue pursue = gameObject.AddComponent<Pursue>();
-            pursue.target = tradeShip;
+        public void StartChasing(GameObject target)
+        {
+            wander.SetStatus(false);
+            pursue.SetTarget(target.transform);
         }
 
-        private void OnTriggerEnter(Collider other)
+        public void StopChasing()
         {
-            if (other.CompareTag("TradeShip"))
-            {
-                targetTradeShip = other.GetComponent<Trade>();
-                isChasing = true;
-            }
+            wander.SetStatus(true);
+            pursue.SetTarget(null);
         }
-
-        void OnTriggerExit(Collider other)
-        {
-            if (other.CompareTag("TradeShip"))
-            {
-                isChasing = false;
-                targetTradeShip = null;
-            }
-        }*/
     }
 }

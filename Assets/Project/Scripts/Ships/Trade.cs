@@ -49,5 +49,11 @@ namespace Project.Scripts.Ships
             //change score if needed
         }
 
+        public void StartFleeing(Pirate fleeFrom)
+        {
+            arrive.SetStatus(false);
+            seek.SetStatus(false);
+        }
+
     }
 }
