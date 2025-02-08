@@ -879,6 +879,7 @@ GameObject:
   - component: {fileID: 206299972272948313}
   - component: {fileID: 7570037026109578612}
   - component: {fileID: 1362271726041386718}
+  - component: {fileID: 1993542371175271665}
   - component: {fileID: 6806556680662589030}
   m_Layer: 0
   m_Name: Trading
@@ -998,7 +999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4f755384ed4a43a97790ef5a0e5b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 200
+  maxAcceleration: 50
 --- !u!114 &7570037026109578612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,7 +1012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96764d666b74c14b164d0d7f82294eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 200
+  maxAcceleration: 50
 --- !u!114 &1362271726041386718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,8 +1026,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAcceleration: 50
-  arrivalRadius: 3
+  arrivalRadius: 20
   slowRadius: 50
+--- !u!114 &1993542371175271665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f4515843d194e019382d464f414fb77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAcceleration: 30
+  maxAvoidanceForce: 60
+  detectionRadius: 60
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!136 &6806556680662589030
 CapsuleCollider:
   m_ObjectHideFlags: 0

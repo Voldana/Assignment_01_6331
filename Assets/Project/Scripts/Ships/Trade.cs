@@ -51,16 +51,17 @@ namespace Project.Scripts.Ships
 
         public void StartFleeing(Pirate fleeFrom)
         {
-            /*arrive.SetStatus(false);
-            seek.SetStatus(false);*/
+            arrive.SetStatus(false);
+            seek.SetStatus(false);
             flee.SetTarget(fleeFrom.transform);
         }
 
         public void StopFleeing()
         {
-            /*arrive.SetStatus(true);
-            seek.SetStatus(true);*/
-            flee.SetTarget(null);
+            arrive.SetStatus(true);
+            seek.SetStatus(true);
+            DOVirtual.DelayedCall(.5f, () => flee.SetTarget(null));
+            // flee.SetTarget(null);
         }
 
     }
