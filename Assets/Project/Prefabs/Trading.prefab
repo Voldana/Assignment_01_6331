@@ -879,8 +879,8 @@ GameObject:
   - component: {fileID: 206299972272948313}
   - component: {fileID: 7570037026109578612}
   - component: {fileID: 1362271726041386718}
-  - component: {fileID: 1993542371175271665}
   - component: {fileID: 6806556680662589030}
+  - component: {fileID: 2786839506979910219}
   m_Layer: 0
   m_Name: Trading
   m_TagString: Trading
@@ -1028,24 +1028,6 @@ MonoBehaviour:
   maxAcceleration: 50
   arrivalRadius: 20
   slowRadius: 50
---- !u!114 &1993542371175271665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 172452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f4515843d194e019382d464f414fb77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAcceleration: 30
-  maxAvoidanceForce: 60
-  detectionRadius: 60
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!136 &6806556680662589030
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1069,6 +1051,25 @@ CapsuleCollider:
   m_Height: 48.72
   m_Direction: 2
   m_Center: {x: 0.1704483, y: 8.6, z: -0.44}
+--- !u!114 &2786839506979910219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a6bf81d6d54e0dba7289f60389b68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAcceleration: 2
+  maxAvoidanceForce: 100
+  detectionDistance: 10
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  rayOffset: 2
 --- !u!1 &177090
 GameObject:
   m_ObjectHideFlags: 0

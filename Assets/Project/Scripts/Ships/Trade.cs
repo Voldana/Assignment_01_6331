@@ -61,7 +61,6 @@ namespace Project.Scripts.Ships
             arrive.SetStatus(true);
             seek.SetStatus(true);
             DOVirtual.DelayedCall(.5f, () => flee.SetTarget(null));
-            // flee.SetTarget(null);
         }
 
     }
