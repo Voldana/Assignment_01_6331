@@ -8,8 +8,6 @@ namespace Project.Scripts
 {
     public class Manager : MonoBehaviour
     {
-
-
         [SerializeField] private Transform[] harbors;
         [SerializeField] public Trade trade;
         private int currentHarborIndex = 0;
@@ -17,11 +15,10 @@ namespace Project.Scripts
         public TMP_Text timerText;
     
         private int score = 0;
-        private float gameTime = 300f; // 5 minutes
+        private float gameTime = 300f; 
 
-        void Start()
+        private void Start()
         {
-            // trade.SetTarget(harbors[currentHarborIndex].position);
             UpdateScore(0);
             StartCoroutine(GameTimer());
         }

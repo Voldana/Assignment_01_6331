@@ -12,6 +12,7 @@ namespace Project.Scripts
         public override void InstallBindings()
         {
             Container.BindInstance(harbors).AsSingle();
+            Container.DeclareSignal<GameEvents.OnGameEnd>();
         }
     }
 }
