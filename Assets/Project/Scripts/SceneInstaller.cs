@@ -11,6 +11,8 @@ namespace Project.Scripts
 
         public override void InstallBindings()
         {
+            SignalBusInstaller.Install(Container);
+            
             Container.BindInstance(harbors).AsSingle();
             Container.DeclareSignal<GameEvents.OnGameEnd>();
         }

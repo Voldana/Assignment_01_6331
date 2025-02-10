@@ -12,11 +12,11 @@ namespace Project.Scripts.UI
         [SerializeField] private TMP_Text scoreText;
         [SerializeField] private TMP_Text clock;
 
-        [Inject] private LoseMenu.Factory loseFactory;
+        // [Inject] private LoseMenu.Factory loseFactory;
         [Inject] private SignalBus signalBus;
 
         private bool timeEnded;
-        
+
         private Timer timer;
 
         private void Start()
@@ -44,17 +44,15 @@ namespace Project.Scripts.UI
             DOTween.KillAll();
             DOVirtual.DelayedCall(1.5f, () =>
             {
-                loseFactory.Create(new LossDetails()
+                /*loseFactory.Create(new LossDetails()
                 {
                     /*score = score,
                     reason = "",
-                    level = levelSetting.level*/
-                }).transform.SetParent(transform.parent, false);
+                    level = levelSetting.level#1#
+                }).transform.SetParent(transform.parent, false);*/
             });
         }
         
-        
-
         private void SetTimer()
         {
             UpdateClock(300);
