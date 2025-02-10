@@ -27,10 +27,11 @@ namespace Project.Scripts.Ships
 
         private void LookForHarbors()
         {
-            currentHarbor = !currentHarbor
-                ? harbors[Random.Range(0, harbors.Capacity)]
-                : harbors.Find(harbor => !harbor.Equals(currentHarbor));
+            if (harbors == null || harbors.Count == 0) return; 
+            var availableHarbors = harbors.FindAll(harbor => harbor != currentHarbor);
+            if (availableHarbors.Count == 0) return; 
 
+            currentHarbor = availableHarbors[Random.Range(0, availableHarbors.Count)];
             SetTarget(currentHarbor.GetDockingPosition());
         }
 

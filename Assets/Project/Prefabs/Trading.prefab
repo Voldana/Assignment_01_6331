@@ -1014,8 +1014,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d96764d666b74c14b164d0d7f82294eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 200
-  weight: 2
+  maxAcceleration: 100
+  weight: 2.5
 --- !u!114 &1362271726041386718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1047,7 +1047,7 @@ MonoBehaviour:
   maxAcceleration: 100
   weight: 3
   maxAvoidanceForce: 50
-  detectionDistance: 40
+  detectionDistance: 60
   obstacleMask:
     serializedVersion: 2
     m_Bits: 64
