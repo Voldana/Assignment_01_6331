@@ -20,67 +20,37 @@ namespace Project.Scripts.Steering
             var result = new SteeringOutput();
             var obstacles = Physics.OverlapSphere(transform.position, detectionRadius, obstacleMask);
 
-            if (obstacles.Length == 0) return result;
+            if (obstacles.Length == 0) return result; // No obstacles detected
 
             Transform closestObstacle = null;
-            var closestTimeToCollision = float.MaxValue;
-            var closestRelativeVelocity = Vector3.zero;
+            var closestDistance = float.MaxValue;
 
             foreach (var obstacle in obstacles)
             {
-                if (obstacle.gameObject == gameObject) continue;
-
-                var relativeVelocity = Vector3.zero;
-                if (obstacle.TryGetComponent<Controller>(out var tarController))
-                    relativeVelocity = tarController.GetVelocity() - controller.GetVelocity();
-                
+                if (obstacle.gameObject == gameObject) continue; // Ignore itself
 
                 var relativePosition = obstacle.transform.position - transform.position;
-                float timeToCollision;
+                var distance = relativePosition.magnitude;
 
-                if (relativeVelocity.sqrMagnitude > 0.01f)
-                    timeToCollision = Vector3.Dot(relativePosition, relativeVelocity) / relativeVelocity.sqrMagnitude;
-                
-                else
-                    continue; 
-                
-
-                if (!(timeToCollision >= 0) || !(timeToCollision < closestTimeToCollision)) continue;
-
-                closestTimeToCollision = timeToCollision;
+                // Find the closest obstacle
+                if (!(distance < closestDistance)) continue;
+                closestDistance = distance;
                 closestObstacle = obstacle.transform;
-                closestRelativeVelocity = relativeVelocity;
             }
 
-            if (!closestObstacle) return result; 
-            
-            var avoidanceForce = -closestRelativeVelocity.normalized * maxAvoidanceForce;
+            if (!closestObstacle) return result; // No collision risks
+
+            // ✅ Use position-based avoidance instead of velocity calculations
+            var avoidanceForce = (transform.position - closestObstacle.position).normalized * maxAvoidanceForce;
             result.linear = avoidanceForce;
+
             return result;
         }
-        
-        private readonly Color detectionColor = new Color(1f, 0.5f, 0f, 0.2f);
-        private readonly Color avoidanceForceColor = Color.red;
-        private readonly Color obstacleLineColor = Color.yellow;
+
         private void OnDrawGizmos()
         {
-
-            Gizmos.color = detectionColor;
+            Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, detectionRadius);
-
-            var obstacles = Physics.OverlapSphere(transform.position, detectionRadius, obstacleMask);
-
-            foreach (var obstacle in obstacles)
-            {
-
-                Gizmos.color = obstacleLineColor;
-                Gizmos.DrawLine(transform.position, obstacle.transform.position);
-            }
-
-            var steering = GetSteering();
-            if (!(steering.linear.magnitude > 0.1f)) return;
-            Gizmos.color = avoidanceForceColor;
-            Gizmos.DrawLine(transform.position, transform.position + steering.linear.normalized * 3f); 
         }
     }
 }

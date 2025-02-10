@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxRotation: 20
-  maxSpeed: 50
+  maxSpeed: 100
   drag: 0.05
 --- !u!114 &4162689225729114686
 MonoBehaviour:
@@ -733,7 +733,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153108}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b4d068444934db4a4b4177a83d8cf8f, type: 3}
   m_Name: 
@@ -745,7 +745,7 @@ MonoBehaviour:
   wanderSpeed: 50
   turnSpeed: 2
   wanderJitter: 4
-  boundaryAvoidanceStrength: 5
+  edgeSlowdownDistance: 5
 --- !u!114 &3896424780937798422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,7 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecec702b500a44bea2585cb1150ce924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 100
+  maxAcceleration: 75
   weight: 2
   predictionTime: 2
 --- !u!136 &7340326305805831739
@@ -1461,6 +1461,10 @@ PrefabInstance:
       propertyPath: pirate
       value: 
       objectReference: {fileID: 4162689225729114686}
+    - target: {fileID: 7792570549154750360, guid: ae2ff153d3e7ba74cabba4e003c763a1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

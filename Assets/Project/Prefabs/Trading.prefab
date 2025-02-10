@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAcceleration: 200
-  weight: 5
+  weight: 2
 --- !u!114 &1362271726041386718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,8 +1045,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAcceleration: 100
-  weight: 2
-  maxAvoidanceForce: 100
+  weight: 3
+  maxAvoidanceForce: 50
   detectionDistance: 40
   obstacleMask:
     serializedVersion: 2
@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAcceleration: 100
   weight: 2
-  maxAvoidanceForce: 100
+  maxAvoidanceForce: 50
   detectionRadius: 50
   obstacleMask:
     serializedVersion: 2

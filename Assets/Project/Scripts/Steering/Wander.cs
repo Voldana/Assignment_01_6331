@@ -8,11 +8,11 @@ namespace Project.Scripts.Steering
         [SerializeField] private float wanderRadius = 20f; // Distance from island
         [SerializeField] private float wanderSpeed = 5f; // Base movement speed
         [SerializeField] private float turnSpeed = 2f; // Smooth rotation
-        [SerializeField] private float wanderJitter = 3f; // Small random movement changes
-        [SerializeField] private float boundaryAvoidanceStrength = 5f; // Strength of avoidance when near boundary
+        [SerializeField] private float wanderJitter = 3f;  // Prevents excessive acceleration
+        [SerializeField] private float edgeSlowdownDistance = 5f; // Distance from edge to start slowing
 
         private Vector3 wanderTarget;
-        private bool avoidingBoundary = false; // Flag to prevent infinite turning
+        private bool adjustingForEdge = false;
 
         private void Start()
         {
@@ -22,7 +22,6 @@ namespace Project.Scripts.Steering
                 return;
             }
 
-            // Start at a random position around the island
             SetNewTarget();
         }
 
@@ -31,27 +30,26 @@ namespace Project.Scripts.Steering
             var result = new SteeringOutput();
             if (!islandCenter) return result;
 
-            // 1️⃣ Detect if the ship is near the boundary
+            // 1️⃣ Check if near the boundary of the wander area
             var distanceFromIsland = Vector3.Distance(transform.position, islandCenter.position);
-            if (distanceFromIsland >= wanderRadius * 0.9f) // Near boundary
+            if (distanceFromIsland >= wanderRadius - edgeSlowdownDistance)
             {
-                avoidingBoundary = true;
+                adjustingForEdge = true;
             }
             else
             {
-                avoidingBoundary = false;
+                adjustingForEdge = false;
             }
 
-            // 2️⃣ If near boundary, smoothly steer back toward the center
-            if (avoidingBoundary)
+            // 2️⃣ If near the boundary, gradually steer back to the center
+            if (adjustingForEdge)
             {
                 var directionToCenter = (islandCenter.position - transform.position).normalized;
-                var avoidanceForce = directionToCenter * boundaryAvoidanceStrength;
-                result.linear = avoidanceForce;
+                result.linear = directionToCenter * (wanderSpeed / 2f); // Reduce speed near the edge
             }
             else
             {
-                // 3️⃣ Normal wandering behavior
+                // 3️⃣ Normal wandering behavior inside the wander area
                 var directionToTarget = (wanderTarget - transform.position).normalized;
 
                 // Smoothly rotate towards target
@@ -61,10 +59,10 @@ namespace Project.Scripts.Steering
                 // Apply movement forward
                 result.linear = transform.forward * wanderSpeed;
 
-                // Slightly adjust wander target to avoid straight lines
+                // Adjust wander target slightly to prevent straight lines
                 ApplyWanderJitter();
 
-                // 4️⃣ If close to the target, select a new one
+                // 4️⃣ If close to the target, pick a new one
                 if (Vector3.Distance(transform.position, wanderTarget) < 5f)
                 {
                     SetNewTarget();
