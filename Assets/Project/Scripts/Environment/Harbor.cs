@@ -27,7 +27,7 @@ namespace Project.Scripts.Environment
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.gameObject.layer.Equals(pirateLayer)) return;
+            if ((pirateLayer & (1 << other.gameObject.layer)) == 0) return;
             signalBus.Fire(new GameEvents.OnPirateDestroy() { pirate = other.gameObject });
         }
 

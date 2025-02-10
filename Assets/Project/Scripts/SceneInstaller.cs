@@ -14,6 +14,8 @@ namespace Project.Scripts
             SignalBusInstaller.Install(Container);
             
             Container.BindInstance(harbors).AsSingle();
+            
+            Container.DeclareSignal<GameEvents.OnPirateDestroy>();
             Container.DeclareSignal<GameEvents.OnGameEnd>();
         }
     }
