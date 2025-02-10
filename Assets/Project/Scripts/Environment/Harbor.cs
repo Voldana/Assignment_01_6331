@@ -1,14 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Zenject;
 
 namespace Project.Scripts.Environment
 {
     public class Harbor : MonoBehaviour
     {
+        [Inject] private SignalBus signalBus;
+
         [SerializeField] private Transform dockingPosition;
-        [SerializeField] private float destructionRange; 
+        [SerializeField] private float destructionRange;
         [SerializeField] private LayerMask pirateLayer;
 
         private bool isFull;
+        private int score;
 
         public bool IsFull()
         {
@@ -20,15 +25,20 @@ namespace Project.Scripts.Environment
             isFull = status;
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.gameObject.layer.Equals(pirateLayer)) return;
+            signalBus.Fire(new GameEvents.OnPirateDestroy() { pirate = other.gameObject });
+        }
+
         public Transform GetDockingPosition()
         {
             return dockingPosition;
         }
-        
+
         private void OnDrawGizmos()
         {
-            // ✅ Draws the destruction range in the editor for visualization
-            Gizmos.color = new Color(1f, 0f, 0f, 0.3f); // Semi-transparent red
+            Gizmos.color = new Color(1f, 0f, 0f, 0.3f);
             Gizmos.DrawSphere(transform.position, destructionRange);
         }
     }

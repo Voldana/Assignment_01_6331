@@ -3,6 +3,7 @@ using DG.Tweening;
 using Project.Scripts.Environment;
 using Project.Scripts.Steering;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -17,10 +18,12 @@ namespace Project.Scripts.Ships
         [SerializeField] private Flee flee;
 
         private Harbor currentHarbor;
+        private int levelNumber;
         private bool isDocked;
 
         private void Start()
         {
+            int.TryParse(SceneManager.GetActiveScene().name, out levelNumber);
             LookForHarbors();
             arrive.SetAction(OnArrive);
         }
@@ -51,10 +54,37 @@ namespace Project.Scripts.Ships
         public void StartFleeing(Pirate fleeFrom)
         {
             flee.SetTarget(fleeFrom.transform);
+            if(!CheckLevel(3)) return;
+            FindClosestHarbor();
+        }
+
+        private void FindClosestHarbor()
+        {
+            if (harbors == null || harbors.Count == 0) return; 
+            
+            Transform closestHarbor = null;
+            var shortestDistance = Mathf.Infinity;
+
+            foreach (var harbor in harbors)
+            {
+                var distance = Vector3.Distance(transform.position, harbor.transform.position);
+                if (!(distance < shortestDistance)) continue;
+                shortestDistance = distance;
+                closestHarbor = harbor.transform;
+            }
+            arrive.SetTarget(closestHarbor);
+            seek.SetTarget(closestHarbor);
+        }
+
+        private bool CheckLevel(int activation)
+        {
+            return levelNumber >= activation;
         }
 
         public void StopFleeing()
         {
+            arrive.SetTarget(currentHarbor.transform);
+            seek.SetTarget(currentHarbor.transform);
             flee.SetTarget(null);
         }
 

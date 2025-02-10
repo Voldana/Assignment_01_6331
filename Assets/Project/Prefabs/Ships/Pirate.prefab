@@ -1315,7 +1315,7 @@ GameObject:
   - component: {fileID: 2651589931749857134}
   - component: {fileID: 6017013584666585913}
   - component: {fileID: 4310512088399484732}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Capture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1585,7 +1585,7 @@ PrefabInstance:
       objectReference: {fileID: 4162689225729114686}
     - target: {fileID: 7792570549154750360, guid: ae2ff153d3e7ba74cabba4e003c763a1, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
