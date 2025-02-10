@@ -5,7 +5,8 @@ namespace Project.Scripts.Steering
     public abstract class Base : MonoBehaviour
     {
         [SerializeField] protected float maxAcceleration = 2f;
-
+        [SerializeField] protected float weight = 1;
+        
         protected Transform target;
         protected bool isActive = true;
 
@@ -19,6 +20,11 @@ namespace Project.Scripts.Steering
         public void SetStatus(bool status)
         {
             isActive = status;
+        }
+
+        public float GetWeight()
+        {
+            return weight;
         }
     }
 

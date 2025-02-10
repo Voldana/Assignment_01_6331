@@ -619,7 +619,8 @@ GameObject:
   - component: {fileID: 4162689225729114686}
   - component: {fileID: 2323954370599333549}
   - component: {fileID: 3896424780937798422}
-  m_Layer: 0
+  - component: {fileID: 7340326305805831739}
+  m_Layer: 7
   m_Name: Pirate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -738,9 +739,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAcceleration: 100
-  wanderRadius: 500
+  weight: 1
+  islandCenter: {fileID: 0}
+  wanderRadius: 200
+  wanderSpeed: 50
+  turnSpeed: 2
   wanderJitter: 4
-  wanderTarget: {fileID: 0}
+  boundaryAvoidanceStrength: 5
 --- !u!114 &3896424780937798422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,7 +759,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAcceleration: 100
+  weight: 2
   predictionTime: 2
+--- !u!136 &7340326305805831739
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153108}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.2
+  m_Height: 29.26
+  m_Direction: 2
+  m_Center: {x: 0.1704483, y: 8.6, z: -3.1}
 --- !u!1 &154540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,7 +1427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1937355897044549115, guid: ae2ff153d3e7ba74cabba4e003c763a1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.6
+      value: 37.7
       objectReference: {fileID: 0}
     - target: {fileID: 1937355897044549115, guid: ae2ff153d3e7ba74cabba4e003c763a1, type: 3}
       propertyPath: m_LocalRotation.w

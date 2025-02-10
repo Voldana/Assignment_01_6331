@@ -20,8 +20,8 @@ namespace Project.Scripts.Steering
             foreach (var behavior in behaviors)
             {
                 var steering = behavior.GetSteering();
-                totalSteering.linear += steering.linear;
-                totalSteering.angular += steering.angular;
+                totalSteering.linear += steering.linear * behavior.GetWeight();
+                totalSteering.angular += steering.angular * behavior.GetWeight();
             }
 
             velocity *= (1 - drag);
