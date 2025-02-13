@@ -17,6 +17,7 @@ namespace Project.Scripts.Ships
         [SerializeField] private Seek seek;
         [SerializeField] private Flee flee;
 
+        private Controller controller;
         private Harbor currentHarbor;
         private int levelNumber;
         private bool isDocked;
@@ -24,8 +25,9 @@ namespace Project.Scripts.Ships
         private void Start()
         {
             int.TryParse(SceneManager.GetActiveScene().name, out levelNumber);
-            LookForHarbors();
+            controller = GetComponent<Controller>();
             arrive.SetAction(OnArrive);
+            LookForHarbors();
         }
 
         private void LookForHarbors()
@@ -54,6 +56,7 @@ namespace Project.Scripts.Ships
         public void StartFleeing(Pirate fleeFrom)
         {
             flee.SetTarget(fleeFrom.transform);
+            controller.SetSpeedLimit(0.7f);
             if(!CheckLevel(3)) return;
             FindClosestHarbor();
         }
@@ -83,6 +86,7 @@ namespace Project.Scripts.Ships
 
         public void StopFleeing()
         {
+            controller.SetSpeedLimit(1);
             arrive.SetTarget(currentHarbor.transform);
             seek.SetTarget(currentHarbor.transform);
             flee.SetTarget(null);

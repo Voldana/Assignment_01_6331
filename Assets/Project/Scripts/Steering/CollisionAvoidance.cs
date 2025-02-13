@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Project.Scripts.Steering
 {
@@ -19,20 +20,18 @@ namespace Project.Scripts.Steering
         {
             var result = new SteeringOutput();
             var obstacles = Physics.OverlapSphere(transform.position, detectionRadius, obstacleMask);
-
-            if (obstacles.Length == 0) return result; // No obstacles detected
+            obstacles = System.Array.FindAll(obstacles, obstacle => obstacle.gameObject != gameObject);
+            if (obstacles.Length == 0) return result;
 
             Transform closestObstacle = null;
             var closestDistance = float.MaxValue;
 
             foreach (var obstacle in obstacles)
             {
-                if (obstacle.gameObject == gameObject) continue; // Ignore itself
 
                 var relativePosition = obstacle.transform.position - transform.position;
                 var distance = relativePosition.magnitude;
-
-                // Find the closest obstacle
+                
                 if (!(distance < closestDistance)) continue;
                 closestDistance = distance;
                 closestObstacle = obstacle.transform;

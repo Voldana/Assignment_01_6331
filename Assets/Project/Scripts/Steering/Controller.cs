@@ -10,6 +10,7 @@ namespace Project.Scripts.Steering
         [SerializeField] private float drag = 0.1f; 
 
         private Vector3 velocity = Vector3.zero;
+        private float speedLimit = 1;
         private float rotation;
 
         private void Update()
@@ -33,11 +34,16 @@ namespace Project.Scripts.Steering
             rotation += totalSteering.angular * Time.deltaTime;
             rotation = Mathf.Clamp(rotation, -maxRotation, maxRotation);
             velocity.y = 0;
-            transform.position += velocity * Time.deltaTime;
+            transform.position += velocity * (speedLimit * Time.deltaTime);
             
             if (!(velocity.magnitude > 0.1f)) return;
             var targetRotation = Quaternion.LookRotation(velocity.normalized);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2.5f);
+        }
+
+        public void SetSpeedLimit(float limit)
+        {
+            speedLimit = limit;
         }
 
         public Vector3 GetVelocity()
