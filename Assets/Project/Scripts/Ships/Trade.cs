@@ -56,7 +56,6 @@ namespace Project.Scripts.Ships
         public void StartFleeing(Pirate fleeFrom)
         {
             flee.SetTarget(fleeFrom.transform);
-            controller.SetSpeedLimit(0.7f);
             if(!CheckLevel(3)) return;
             FindClosestHarbor();
         }

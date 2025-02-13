@@ -10,7 +10,7 @@ namespace Project.Scripts.Ships
         [Inject] private SignalBus signalBus;
         
         [SerializeField] private Pursue pursue;
-        [SerializeField] private NewWander wander;
+        [SerializeField] private Wander wander;
 
         private void Start()
         {

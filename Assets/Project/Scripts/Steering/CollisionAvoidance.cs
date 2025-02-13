@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Project.Scripts.Steering
 {
@@ -23,25 +22,30 @@ namespace Project.Scripts.Steering
             obstacles = System.Array.FindAll(obstacles, obstacle => obstacle.gameObject != gameObject);
             if (obstacles.Length == 0) return result;
 
-            Transform closestObstacle = null;
-            var closestDistance = float.MaxValue;
+            // 1️⃣ Calculate the combined avoidance force
+            Vector3 totalAvoidanceForce = Vector3.zero;
+            int obstacleCount = 0;
 
             foreach (var obstacle in obstacles)
             {
-
                 var relativePosition = obstacle.transform.position - transform.position;
                 var distance = relativePosition.magnitude;
-                
-                if (!(distance < closestDistance)) continue;
-                closestDistance = distance;
-                closestObstacle = obstacle.transform;
+
+                // Calculate avoidance force inversely proportional to the distance
+                if (distance > 0.01f)
+                {
+                    Vector3 avoidanceForce = (transform.position - obstacle.transform.position).normalized * (maxAvoidanceForce / distance);
+                    totalAvoidanceForce += avoidanceForce;
+                    obstacleCount++;
+                }
             }
 
-            if (!closestObstacle) return result; // No collision risks
-
-            // ✅ Use position-based avoidance instead of velocity calculations
-            var avoidanceForce = (transform.position - closestObstacle.position).normalized * maxAvoidanceForce;
-            result.linear = avoidanceForce;
+            // 2️⃣ Normalize force based on obstacle count
+            if (obstacleCount > 0)
+            {
+                totalAvoidanceForce = totalAvoidanceForce.normalized * (maxAvoidanceForce * (1 + obstacleCount * 0.5f));
+                result.linear = totalAvoidanceForce;
+            }
 
             return result;
         }

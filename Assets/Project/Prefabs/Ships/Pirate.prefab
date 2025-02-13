@@ -617,7 +617,6 @@ GameObject:
   - component: {fileID: 2364486}
   - component: {fileID: 4327099374662396663}
   - component: {fileID: 4162689225729114686}
-  - component: {fileID: 2323954370599333549}
   - component: {fileID: 3896424780937798422}
   - component: {fileID: 1162467828671353352}
   - component: {fileID: 7340326305805831739}
@@ -731,26 +730,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pursue: {fileID: 3896424780937798422}
   wander: {fileID: 2062687258601610201}
---- !u!114 &2323954370599333549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153108}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b4d068444934db4a4b4177a83d8cf8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAcceleration: 100
-  weight: 1
-  islandCenter: {fileID: 0}
-  wanderRadius: 150
-  wanderSpeed: 70
-  turnSpeed: 5
-  edgeAvoidanceForce: 50
-  targetChangeDistance: 5
 --- !u!114 &3896424780937798422
 MonoBehaviour:
   m_ObjectHideFlags: 0

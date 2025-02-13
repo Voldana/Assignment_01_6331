@@ -171,6 +171,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: islandCenter
+      value: 
+      objectReference: {fileID: 1429731410}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: wanderRadius
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: islandCenter
       value: 
@@ -372,6 +380,14 @@ PrefabInstance:
     - target: {fileID: 456082, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: islandCenter
+      value: 
+      objectReference: {fileID: 1429731410}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: wanderRadius
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: islandCenter
@@ -672,9 +688,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: islandCenter
+      value: 
+      objectReference: {fileID: 1429731410}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: wanderRadius
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: turnSpeed
@@ -1052,6 +1076,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: islandCenter
+      value: 
+      objectReference: {fileID: 1429731410}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: wanderRadius
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: islandCenter
       value: 
@@ -1242,6 +1274,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: islandCenter
+      value: 
+      objectReference: {fileID: 1429731410}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: wanderRadius
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: islandCenter
       value: 
@@ -1306,6 +1346,14 @@ PrefabInstance:
     - target: {fileID: 456082, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: islandCenter
+      value: 
+      objectReference: {fileID: 1429731410}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: wanderRadius
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: islandCenter
@@ -1372,6 +1420,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: islandCenter
+      value: 
+      objectReference: {fileID: 1429731410}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: wanderRadius
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: islandCenter
       value: 
@@ -1437,6 +1493,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: islandCenter
+      value: 
+      objectReference: {fileID: 1429731410}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: wanderRadius
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: islandCenter
       value: 
@@ -1501,6 +1565,14 @@ PrefabInstance:
     - target: {fileID: 456082, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: islandCenter
+      value: 
+      objectReference: {fileID: 1429731410}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: wanderRadius
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: islandCenter
@@ -1760,6 +1832,14 @@ PrefabInstance:
     - target: {fileID: 456082, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: islandCenter
+      value: 
+      objectReference: {fileID: 1429731410}
+    - target: {fileID: 2062687258601610201, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
+      propertyPath: wanderRadius
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 2323954370599333549, guid: ca514cb9ea5a00b499f879bd90a9aaca, type: 3}
       propertyPath: islandCenter
