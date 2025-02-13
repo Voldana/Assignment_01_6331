@@ -618,7 +618,6 @@ GameObject:
   - component: {fileID: 4327099374662396663}
   - component: {fileID: 4162689225729114686}
   - component: {fileID: 3896424780937798422}
-  - component: {fileID: 1162467828671353352}
   - component: {fileID: 7340326305805831739}
   - component: {fileID: 8980952776493655500}
   - component: {fileID: -6459968667809618136}
@@ -745,25 +744,6 @@ MonoBehaviour:
   maxAcceleration: 100
   weight: 2
   predictionTime: 2
---- !u!114 &1162467828671353352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5a6bf81d6d54e0dba7289f60389b68a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAcceleration: 100
-  weight: 2
-  maxAvoidanceForce: 50
-  detectionDistance: 35
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!136 &7340326305805831739
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -812,7 +792,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &-6459968667809618136
 MonoBehaviour:
@@ -852,7 +832,10 @@ MonoBehaviour:
   wanderSpeed: 50
   turnSpeed: 5
   targetChangeThreshold: 3
-  edgeAvoidanceDistance: 5
+  rayDistance: 5
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &154540
 GameObject:
   m_ObjectHideFlags: 0
