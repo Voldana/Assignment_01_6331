@@ -37,6 +37,7 @@ namespace Project.Scripts.Steering
 
             // 2️⃣ Move toward the current target
             var directionToTarget = (currentTarget - transform.position).normalized;
+            directionToTarget.y = 0; // ✅ Ensure ship never looks down
 
             // Rotate smoothly toward the target
             var desiredRotation = Quaternion.LookRotation(directionToTarget);
@@ -62,28 +63,34 @@ namespace Project.Scripts.Steering
             // Ray directions (forward, left, right)
             Vector3[] directions = {
                 transform.forward,
-                Quaternion.Euler(0, -25, 0) * transform.forward,
-                Quaternion.Euler(0, 25, 0) * transform.forward
+                Quaternion.Euler(0, -45, 0) * transform.forward,
+                Quaternion.Euler(0, 45, 0) * transform.forward
             };
 
             foreach (var direction in directions)
             {
-                if (!Physics.Raycast(transform.position, direction, out RaycastHit hit, rayDistance,
-                        obstacleMask)) continue;
-                // Calculate new target using normal vector of the hit
-                var hitNormal = hit.normal;
-                avoidanceTarget = transform.position + hitNormal * (wanderRadius * 0.5f);
-                return true;
+                if (Physics.Raycast(transform.position, direction, out RaycastHit hit, rayDistance, obstacleMask))
+                {
+                    // Calculate new target using normal vector of the hit
+                    var hitNormal = hit.normal;
+                    hitNormal.y = 0; // ✅ Flatten the normal vector to avoid looking downward
+                    avoidanceTarget = transform.position + hitNormal.normalized * (wanderRadius * 0.5f);
+                    return true;
+                }
             }
 
             // Check if near the edge of the wandering area
             var distanceFromCenter = Vector3.Distance(transform.position, islandCenter.position);
-            if (!(distanceFromCenter > wanderRadius - 2f)) return false;
-            // Calculate normal based on direction to center
-            var directionToCenter = (islandCenter.position - transform.position).normalized;
-            avoidanceTarget = transform.position + directionToCenter * (wanderRadius * 0.5f);
-            return true;
+            if (distanceFromCenter > wanderRadius - 2f)
+            {
+                // Calculate normal based on direction to center
+                var directionToCenter = (islandCenter.position - transform.position).normalized;
+                directionToCenter.y = 0; // ✅ Flatten the direction vector
+                avoidanceTarget = transform.position + directionToCenter * (wanderRadius * 0.5f);
+                return true;
+            }
 
+            return false;
         }
 
         // Set a new random target within the wander radius
@@ -110,8 +117,8 @@ namespace Project.Scripts.Steering
             Gizmos.color = Color.yellow;
             Vector3[] directions = {
                 transform.forward,
-                Quaternion.Euler(0, -25, 0) * transform.forward,
-                Quaternion.Euler(0, 25, 0) * transform.forward
+                Quaternion.Euler(0, -45, 0) * transform.forward,
+                Quaternion.Euler(0, 45, 0) * transform.forward
             };
             foreach (var dir in directions)
             {

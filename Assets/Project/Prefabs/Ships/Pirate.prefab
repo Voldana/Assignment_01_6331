@@ -832,7 +832,7 @@ MonoBehaviour:
   wanderSpeed: 50
   turnSpeed: 5
   targetChangeThreshold: 3
-  rayDistance: 5
+  rayDistance: 30
   obstacleMask:
     serializedVersion: 2
     m_Bits: 64
