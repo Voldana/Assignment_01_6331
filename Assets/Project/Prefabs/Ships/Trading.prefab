@@ -1047,7 +1047,7 @@ MonoBehaviour:
   maxAcceleration: 100
   weight: 3
   maxAvoidanceForce: 50
-  detectionDistance: 50
+  detectionDistance: 40
   obstacleMask:
     serializedVersion: 2
     m_Bits: 64
@@ -1064,9 +1064,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAcceleration: 100
-  weight: 2
+  weight: 3
   maxAvoidanceForce: 50
-  detectionRadius: 50
+  detectionRadius: 40
   obstacleMask:
     serializedVersion: 2
     m_Bits: 384
