@@ -9,7 +9,7 @@ namespace Project.Scripts.Steering
         public override SteeringOutput GetSteering()
         {
             var result = new SteeringOutput();
-            if (target == null) return result;
+            if (!target) return result;
 
             var threatVelocity = target.GetComponent<Controller>().GetVelocity();
             var futurePosition = target.position + threatVelocity * predictionTime;

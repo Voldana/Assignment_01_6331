@@ -5,9 +5,9 @@ namespace Project.Scripts.Steering
 {
     public class Align: Base
     {
-        [SerializeField] private float targetAngularSpeed = 5f; // Maximum rotation speed
-        [SerializeField] private  float alignRadius = 5f;        // When to start slowing rotation
-        [SerializeField] private float slowRadius = 15f;        // Slow down rotation over distance
+        [SerializeField] private float targetAngularSpeed = 5f; 
+        [SerializeField] private  float alignRadius = 5f;        
+        [SerializeField] private float slowRadius = 15f;        
         
         private Controller controller;
         private void Start()
@@ -21,7 +21,7 @@ namespace Project.Scripts.Steering
             
             var movementDirection = controller.GetVelocity();
         
-            if (movementDirection.magnitude < 0.1f) return result; // Ignore if not moving
+            if (movementDirection.magnitude < 0.1f) return result;
 
             var targetAngle = Mathf.Atan2(movementDirection.y, movementDirection.x) * Mathf.Rad2Deg;
             var angleDifference = Mathf.DeltaAngle(transform.eulerAngles.z, targetAngle);
@@ -29,14 +29,14 @@ namespace Project.Scripts.Steering
 
             if (absAngleDiff < alignRadius)
             {
-                result.angular = 0; // Already aligned, stop rotating
+                result.angular = 0; 
             }
             else
             {
                 var rotationSpeed = targetAngularSpeed;
                 if (absAngleDiff < slowRadius)
                 {
-                    rotationSpeed *= absAngleDiff / slowRadius; // Slow down rotation
+                    rotationSpeed *= absAngleDiff / slowRadius;
                 }
 
                 result.angular = Mathf.Sign(angleDifference) * rotationSpeed;
