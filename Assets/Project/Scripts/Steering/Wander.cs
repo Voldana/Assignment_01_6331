@@ -24,7 +24,8 @@ namespace Project.Scripts.Steering
         public override SteeringOutput GetSteering()
         {
             var result = new SteeringOutput();
-
+            if(!isActive) return result;
+            
             if (DetectObstacleOrEdge(out var avoidanceTarget))
             {
                 if (avoidanceTarget != Vector3.zero && avoidanceTarget != currentTarget)

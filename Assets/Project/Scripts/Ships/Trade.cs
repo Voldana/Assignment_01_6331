@@ -58,24 +58,27 @@ namespace Project.Scripts.Ships
             flee.SetTarget(fleeFrom.transform);
             if(!CheckLevel(3)) return;
             FindClosestHarbor();
+            controller.SetSpeedLimit(.8f);
         }
 
         private void FindClosestHarbor()
         {
             if (harbors == null || harbors.Count == 0) return; 
             
-            Transform closestHarbor = null;
+            Harbor closestHarbor = null;
             var shortestDistance = Mathf.Infinity;
 
             foreach (var harbor in harbors)
             {
-                var distance = Vector3.Distance(transform.position, harbor.transform.position);
+                var distance = Vector3.Distance(transform.position, harbor.GetDockingPosition().position);
                 if (!(distance < shortestDistance)) continue;
                 shortestDistance = distance;
-                closestHarbor = harbor.transform;
+                closestHarbor = harbor;
             }
-            arrive.SetTarget(closestHarbor);
-            seek.SetTarget(closestHarbor);
+
+            if (closestHarbor == null) return;
+            arrive.SetTarget(closestHarbor.GetDockingPosition());
+            seek.SetTarget(closestHarbor.GetDockingPosition());
         }
 
         private bool CheckLevel(int activation)
@@ -86,8 +89,8 @@ namespace Project.Scripts.Ships
         public void StopFleeing()
         {
             controller.SetSpeedLimit(1);
-            arrive.SetTarget(currentHarbor.transform);
-            seek.SetTarget(currentHarbor.transform);
+            arrive.SetTarget(currentHarbor.GetDockingPosition());
+            seek.SetTarget(currentHarbor.GetDockingPosition());
             flee.SetTarget(null);
         }
 

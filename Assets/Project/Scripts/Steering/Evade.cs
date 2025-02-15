@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Project.Scripts.Steering
+﻿namespace Project.Scripts.Steering
 {
     public class Evade: Base
     {
