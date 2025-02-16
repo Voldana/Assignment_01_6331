@@ -26,11 +26,13 @@ namespace Project.Scripts.Ships
         private void SelfDestruct(GameEvents.OnPirateDestroy signal)
         {
             if(!signal.pirate.Equals(gameObject)) return;
+            Unsubscribe();
             Destroy(gameObject);
         }        
         private void SelfDestruct(GameEvents.OnCollision signal)
         {
             if(!signal.collided.Equals(gameObject)) return;
+            Unsubscribe();
             Destroy(gameObject);
         }
 
@@ -38,6 +40,12 @@ namespace Project.Scripts.Ships
         {
             wander.SetStatus(false);
             pursue.SetTarget(target.transform);
+        }
+
+        private void Unsubscribe()
+        {
+            signalBus.TryUnsubscribe<GameEvents.OnPirateDestroy>(SelfDestruct);
+            signalBus.TryUnsubscribe<GameEvents.OnCollision>(SelfDestruct);
         }
 
         public void StopChasing()
