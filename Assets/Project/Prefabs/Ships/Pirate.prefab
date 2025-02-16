@@ -812,7 +812,7 @@ MonoBehaviour:
   detectionRadius: 18
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 448
 --- !u!114 &2062687258601610201
 MonoBehaviour:
   m_ObjectHideFlags: 0

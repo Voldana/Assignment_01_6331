@@ -83,15 +83,15 @@ namespace Project.Scripts.Ships
 
             foreach (var harbor in harbors)
             {
-                var distance = Vector3.Distance(transform.position, harbor.GetDockingPosition().position);
+                var distance = Vector3.Distance(transform.position, harbor.transform.position);
                 if (!(distance < shortestDistance)) continue;
                 shortestDistance = distance;
                 closestHarbor = harbor;
             }
 
             if (closestHarbor == null) return;
-            arrive.SetTarget(closestHarbor.GetDockingPosition());
-            seek.SetTarget(closestHarbor.GetDockingPosition());
+            arrive.SetTarget(closestHarbor.transform);
+            seek.SetTarget(closestHarbor.transform);
         }
 
         private bool CheckLevel(int activation)

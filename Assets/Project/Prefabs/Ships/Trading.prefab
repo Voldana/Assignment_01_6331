@@ -1066,7 +1066,7 @@ MonoBehaviour:
   maxAcceleration: 100
   weight: 3
   maxAvoidanceForce: 50
-  detectionRadius: 40
+  detectionRadius: 30
   obstacleMask:
     serializedVersion: 2
     m_Bits: 384
