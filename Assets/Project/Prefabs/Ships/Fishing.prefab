@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee0e75371614534a937dbd361e65c95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishingZoneRadius: 200
+  fishingZoneRadius: 300
   fishingZoneCenter: {fileID: 0}
   fishingDuration: 5
   speed: 10
