@@ -9,6 +9,10 @@ namespace Project.Scripts
             public string reason;
         }
 
+        public struct OnCollision
+        {
+            public GameObject collided;
+        }
         public struct OnPirateDestroy
         {
             public GameObject pirate;

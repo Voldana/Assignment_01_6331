@@ -20,11 +20,17 @@ namespace Project.Scripts.Ships
         private void Subscribe()
         {
             signalBus.Subscribe<GameEvents.OnPirateDestroy>(SelfDestruct);
+            signalBus.Subscribe<GameEvents.OnCollision>(SelfDestruct);
         }
 
         private void SelfDestruct(GameEvents.OnPirateDestroy signal)
         {
             if(!signal.pirate.Equals(gameObject)) return;
+            Destroy(gameObject);
+        }        
+        private void SelfDestruct(GameEvents.OnCollision signal)
+        {
+            if(!signal.collided.Equals(gameObject)) return;
             Destroy(gameObject);
         }
 

@@ -12,6 +12,7 @@ namespace Project.Scripts.Ships
     public class Trade: MonoBehaviour
     {
         [Inject] private List<Harbor> harbors;
+        [Inject] private SignalBus signalBus;
 
         [SerializeField] private Arrive arrive;
         [SerializeField] private Seek seek;
@@ -28,6 +29,18 @@ namespace Project.Scripts.Ships
             controller = GetComponent<Controller>();
             arrive.SetAction(OnArrive);
             LookForHarbors();
+        }
+        
+        private void Subscribe()
+        {
+            signalBus.Subscribe<GameEvents.OnCollision>(FishingCollision);
+        }
+
+        private void FishingCollision(GameEvents.OnCollision signal)
+        {
+            if(!signal.collided.Equals(gameObject)) return;
+            Destroy(gameObject);
+            signalBus.Fire(new GameEvents.OnGameEnd());
         }
 
         private void LookForHarbors()

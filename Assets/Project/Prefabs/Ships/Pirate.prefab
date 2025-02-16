@@ -828,14 +828,14 @@ MonoBehaviour:
   maxAcceleration: 100
   weight: 1
   islandCenter: {fileID: 0}
-  wanderRadius: 150
+  wanderRadius: 256
   wanderSpeed: 50
   turnSpeed: 5
   targetChangeThreshold: 3
-  rayDistance: 30
+  rayDistance: 25
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
 --- !u!1 &154540
 GameObject:
   m_ObjectHideFlags: 0

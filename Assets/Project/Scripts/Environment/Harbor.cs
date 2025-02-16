@@ -29,6 +29,7 @@ namespace Project.Scripts.Environment
         {
             if ((pirateLayer & (1 << other.gameObject.layer)) == 0) return;
             signalBus.Fire(new GameEvents.OnPirateDestroy() { pirate = other.gameObject });
+            score++;
         }
 
         public Transform GetDockingPosition()
