@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Ships;
+using UnityEngine;
 
 namespace Project.Scripts
 {
@@ -16,6 +17,12 @@ namespace Project.Scripts
         public struct OnPirateDestroy
         {
             public GameObject pirate;
+        }
+        
+        public struct OnScoreChange
+        {
+            public Company.CompanyName company;
+            public int score;
         }
     }
 }
