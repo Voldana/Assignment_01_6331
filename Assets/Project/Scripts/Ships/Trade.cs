@@ -14,6 +14,7 @@ namespace Project.Scripts.Ships
         [Inject] private List<Harbor> harbors;
         [Inject] private SignalBus signalBus;
 
+        [SerializeField] private Company.CompanyName company;
         [SerializeField] private Arrive arrive;
         [SerializeField] private Seek seek;
         [SerializeField] private Flee flee;

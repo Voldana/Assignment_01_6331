@@ -1,4 +1,5 @@
 ﻿using System;
+using Project.Scripts.Ships;
 using UnityEngine;
 using Zenject;
 
@@ -8,6 +9,7 @@ namespace Project.Scripts.Environment
     {
         [Inject] private SignalBus signalBus;
 
+        [SerializeField] private Company.CompanyName company;
         [SerializeField] private Transform dockingPosition;
         [SerializeField] private float destructionRange;
         [SerializeField] private LayerMask pirateLayer;
