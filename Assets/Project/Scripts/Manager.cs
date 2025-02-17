@@ -47,7 +47,7 @@ namespace Project.Scripts
             scoreText.text = "Score: " + points;
         }
 
-        public void EndGame()
+        private void EndGame()
         {
             Debug.Log("Game Over!");
             Time.timeScale = 0;

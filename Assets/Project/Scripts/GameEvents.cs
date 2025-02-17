@@ -19,6 +19,11 @@ namespace Project.Scripts
             public GameObject pirate;
         }
         
+        public struct OnTradeShipDestroy
+        {
+            public Company.CompanyName company;
+        }
+        
         public struct OnScoreChange
         {
             public Company.CompanyName company;

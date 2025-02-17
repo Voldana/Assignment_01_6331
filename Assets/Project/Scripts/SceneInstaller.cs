@@ -19,7 +19,9 @@ namespace Project.Scripts
             
             Container.BindFactory<LevelMenu, LevelMenu.Factory>().FromComponentInNewPrefab(levelMenu).AsSingle();
             
+            Container.DeclareSignal<GameEvents.OnTradeShipDestroy>();
             Container.DeclareSignal<GameEvents.OnPirateDestroy>();
+            Container.DeclareSignal<GameEvents.OnScoreChange>();
             Container.DeclareSignal<GameEvents.OnCollision>();
             Container.DeclareSignal<GameEvents.OnGameEnd>();
         }

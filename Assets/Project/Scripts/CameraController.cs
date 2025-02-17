@@ -16,7 +16,7 @@ namespace Project.Scripts
         {
             var pos = transform.position;
 
-            /*if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0))
             {
                 var delta = Input.mousePosition - lastMousePosition;
                 pos -= new Vector3(delta.x * moveSpeed * Time.deltaTime, 0, delta.y * moveSpeed * Time.deltaTime);
@@ -26,7 +26,7 @@ namespace Project.Scripts
             {
                 var delta = Input.mousePosition - lastMousePosition;
                 transform.Rotate(Vector3.up, delta.x * rotationSpeed * Time.deltaTime, Space.World);
-            }*/
+            }
 
             var scroll = Input.GetAxis("Mouse ScrollWheel");
             pos.y -= scroll * scrollSpeed * 100f * Time.deltaTime;

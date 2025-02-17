@@ -15,7 +15,6 @@ namespace Project.Scripts.Environment
         [SerializeField] private LayerMask pirateLayer;
 
         private bool isFull;
-        private int score;
 
         public bool IsFull()
         {
@@ -31,7 +30,7 @@ namespace Project.Scripts.Environment
         {
             if ((pirateLayer & (1 << other.gameObject.layer)) == 0) return;
             signalBus.Fire(new GameEvents.OnPirateDestroy() { pirate = other.gameObject });
-            score++;
+            signalBus.Fire(new GameEvents.OnScoreChange{company = company, score = 25});
         }
 
         public Transform GetDockingPosition()
