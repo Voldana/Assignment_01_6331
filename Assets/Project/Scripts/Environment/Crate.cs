@@ -10,9 +10,10 @@ namespace Project.Scripts.Environment
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Pirate") || other.gameObject.CompareTag("Trading"))
+            if (other.gameObject.CompareTag("Pirate") || other.gameObject.CompareTag("Trading") ||
+                other.gameObject.CompareTag("Player"))
             {
-                signalBus.Fire(new GameEvents.OnCollision{collided = other.gameObject});
+                signalBus.Fire(new GameEvents.OnCollision { collided = other.gameObject });
             }
         }
     }

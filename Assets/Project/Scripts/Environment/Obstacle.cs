@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
@@ -8,7 +7,7 @@ namespace Project.Scripts.Environment
     public class Obstacle : MonoBehaviour
     {
         [Inject] private SignalBus signalBus;
-        
+
         [SerializeField] private Transform zoneCenter;
         [SerializeField] private float zoneRadius = 50f;
         [SerializeField] private float speed = 3f;
@@ -34,8 +33,9 @@ namespace Project.Scripts.Environment
 
         private void OnTriggerEnter(Collider other)
         {
-            if(!other.gameObject.CompareTag("Pirate")) return;
-            signalBus.Fire(new GameEvents.OnPirateDestroy{pirate = other.gameObject});
+            if (!other.gameObject.CompareTag("Pirate") && !other.gameObject.CompareTag("Trading") &&
+                !other.gameObject.CompareTag("Player")) return;
+            signalBus.Fire(new GameEvents.OnCollision { collided = other.gameObject });
         }
 
         private void SetRandomDirection()

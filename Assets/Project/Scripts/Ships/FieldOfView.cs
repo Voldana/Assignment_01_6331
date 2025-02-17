@@ -7,28 +7,39 @@ namespace Project.Scripts.Ships
     {
         [SerializeField] private Pirate pirate;
 
-        private Trade currentTarget;
+        private GameObject currentTarget;
+        private Trade tradeShip;
         private bool isPursuing;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!isPursuing && other.CompareTag("Trading")){}
+            if (!isPursuing && other.CompareTag("Trading"))
                 TryAndPursue(other.gameObject);
+            if(!isPursuing && other.CompareTag("Player"))
+                PursuePlayer(other.gameObject);
         }
 
         private void TryAndPursue(GameObject target)
         {
             if (!target.TryGetComponent<Trade>(out var trading)) return;
             isPursuing = true;
-            currentTarget = trading;
+            tradeShip = trading;
+            currentTarget = trading.gameObject;
             trading.StartFleeing(pirate);
             pirate.StartChasing(target);
             
         }
 
+        private void PursuePlayer(GameObject target)
+        {
+            isPursuing = true;
+            currentTarget = target;
+            pirate.StartChasing(target);
+        }
+
         private void OnTriggerExit(Collider other)
         {
-            if (!isPursuing || !other.gameObject.Equals(currentTarget.gameObject)) return;
+            if (!isPursuing || !other.gameObject.Equals(currentTarget)) return;
             StopChasing();
         }
         
@@ -36,8 +47,8 @@ namespace Project.Scripts.Ships
         {
             isPursuing = false;
             pirate.StopChasing();
-            if(!currentTarget) return;
-            currentTarget.StopFleeing();
+            if(!tradeShip) return;
+            tradeShip.StopFleeing();
         }
     }
 }

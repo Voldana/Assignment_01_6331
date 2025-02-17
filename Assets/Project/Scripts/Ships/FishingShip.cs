@@ -92,10 +92,10 @@ namespace Project.Scripts.Ships
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.gameObject.CompareTag("Trading") && !other.gameObject.CompareTag("Pirate")) return;
+            if (!other.gameObject.CompareTag("Trading") && !other.gameObject.CompareTag("Pirate") &&
+                !other.gameObject.CompareTag("Player")) return;
             signalBus.Fire(new GameEvents.OnCollision { collided = other.gameObject });
             Destroy(gameObject);
-
         }
 
         private void OnDrawGizmos()

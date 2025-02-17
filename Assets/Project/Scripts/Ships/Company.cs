@@ -11,7 +11,8 @@ namespace Project.Scripts.Ships
             Green,
             Yellow,
             Purple,
-            Orange
+            Orange,
+            Player
         }
 
         public static Color GetColor(CompanyName name)
