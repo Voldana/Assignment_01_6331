@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using TMPro;
@@ -12,7 +13,7 @@ namespace Project.Scripts.UI
         [SerializeField] private TMP_Text scoreText;
         [SerializeField] private TMP_Text clock;
 
-        // [Inject] private LoseMenu.Factory loseFactory;
+        [Inject] private LevelMenu.Factory levelFactory;
         [Inject] private SignalBus signalBus;
 
         private bool timeEnded;
@@ -25,6 +26,12 @@ namespace Project.Scripts.UI
             DOTween.timeScale = 1;
             SubscribeSignals();
             SetTimer();
+        }
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))
+                OnPauseClick();
         }
 
         private void SubscribeSignals()
@@ -52,12 +59,17 @@ namespace Project.Scripts.UI
                 }).transform.SetParent(transform.parent, false);*/
             });
         }
-        
+
         private void SetTimer()
         {
             UpdateClock(300);
             timer = new Timer(300, UpdateClock, OnTimerEnd);
             timer.Start();
+        }
+
+        public void OnPauseClick()
+        {
+            levelFactory.Create().transform.SetParent(transform.parent, false);
         }
 
         private void UpdateClock(int newTime)
