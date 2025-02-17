@@ -116,7 +116,7 @@ namespace Project.Scripts.Ships
             {
                 if (harbor == currentHarbor) continue;
                 var distance = Vector3.Distance(transform.position, harbor.transform.position);
-                var score = Mathf.RoundToInt(distance * 0.5f);
+                var score = Mathf.RoundToInt(distance * 0.05f);
 
                 if (score <= highestScore) continue;
                 highestScore = score;
@@ -125,7 +125,7 @@ namespace Project.Scripts.Ships
 
             currentScore = highestScore;
             currentHarbor = bestHarbor;
-            if (bestHarbor) SetTarget(bestHarbor.GetDockingPosition());
+            if (currentHarbor) SetTarget(currentHarbor.GetDockingPosition());
         }
 
         public void Death()
@@ -153,8 +153,10 @@ namespace Project.Scripts.Ships
         public void StopFleeing()
         {
             controller.SetSpeedLimit(1);
-            arrive.SetTarget(currentHarbor.GetDockingPosition());
-            seek.SetTarget(currentHarbor.GetDockingPosition());
+            if (levelNumber >= 9)
+                GetBestHarbor();
+            else
+                LookForHarbors();
             flee.SetTarget(null);
         }
     }

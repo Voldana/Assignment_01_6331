@@ -35,11 +35,11 @@ namespace Project.Scripts
             signalBus.Subscribe<GameEvents.OnScoreChange>(ChangeScore);
         }
 
-        private void ChangeScore(GameEvents.OnScoreChange signal)
+        private void ChangeScore(GameEvents.OnScoreChange signal) 
         {
             var company = companyDatas.Find(data => data.company == signal.company);
             company.score += signal.score;
-            company.scoreText.text = company.company.ToString() + " Company: " + company.score;
+            company.scoreText.text = company.company + " Company: " + company.score;
         }
 
         public int GetScore(Company.CompanyName company)
@@ -58,7 +58,7 @@ namespace Project.Scripts
     }
 
     [Serializable]
-    public struct CompanyData
+    public class CompanyData
     {
         public Company.CompanyName company;
         public TMP_Text scoreText;

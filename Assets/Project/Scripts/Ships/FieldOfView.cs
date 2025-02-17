@@ -29,8 +29,14 @@ namespace Project.Scripts.Ships
         private void OnTriggerExit(Collider other)
         {
             if (!isPursuing || !other.gameObject.Equals(currentTarget.gameObject)) return;
+            StopChasing();
+        }
+        
+        public void StopChasing()
+        {
             isPursuing = false;
             pirate.StopChasing();
+            if(!currentTarget) return;
             currentTarget.StopFleeing();
         }
     }

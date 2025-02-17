@@ -9,6 +9,7 @@ namespace Project.Scripts.Ships
     {
         [Inject] private SignalBus signalBus;
         
+        [SerializeField] private FieldOfView fieldOfView;
         [SerializeField] private Pursue pursue;
         [SerializeField] private Wander wander;
 
@@ -27,12 +28,14 @@ namespace Project.Scripts.Ships
         {
             if(!signal.pirate.Equals(gameObject)) return;
             Unsubscribe();
+            fieldOfView.StopChasing();
             Destroy(gameObject);
         }        
         private void SelfDestruct(GameEvents.OnCollision signal)
         {
             if(!signal.collided.Equals(gameObject)) return;
             Unsubscribe();
+            fieldOfView.StopChasing();
             Destroy(gameObject);
         }
 
