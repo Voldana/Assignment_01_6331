@@ -1,5 +1,7 @@
-﻿using Project.Scripts.Environment;
+﻿using DG.Tweening;
+using Project.Scripts.Environment;
 using Project.Scripts.Ships;
+using TMPro;
 using UnityEngine;
 using Zenject;
 
@@ -8,21 +10,23 @@ namespace Project.Scripts.Player
     public class PlayerController : MonoBehaviour
     {
         [Inject] private SignalBus signalBus;
-        
+
         [SerializeField] private Company.CompanyName company;
         [SerializeField] private float moveSpeed = 10f;
         [SerializeField] private float turnSpeed = 100f;
+        [SerializeField] private TMP_Text unloadingText;
+        [SerializeField] private TMP_Text scoreText;
         [SerializeField] private Harbor harbor;
-
+        
         private bool isUnloading;
-        private int score;
         private Vector3 velocity;
+        private float totalScore;
+        private int score;
 
         private void Start()
         {
             Subscribe();
         }
-
 
 
         private void Subscribe()
@@ -43,7 +47,7 @@ namespace Project.Scripts.Player
 
             velocity = transform.forward * (vertical * moveSpeed * Time.deltaTime);
             transform.position += velocity;
-
+            CalculateScore();
             transform.Rotate(0, horizontal * turnSpeed * Time.deltaTime, 0);
         }
 
@@ -59,9 +63,26 @@ namespace Project.Scripts.Player
             signalBus.Fire(new GameEvents.OnScoreChange { company = company, score = -10 });
         }
 
+
+        private void CalculateScore()
+        {
+            if(isUnloading) return;
+            totalScore += velocity.magnitude /35f;
+            scoreText.text = "Player score: " + Mathf.RoundToInt(totalScore);
+        }
+
         private void OnTriggerEnter(Collider other)
         {
-           
+            if(!other.gameObject.CompareTag("Harbor")) return;
+            isUnloading = true;
+            unloadingText.gameObject.SetActive(true);
+            DOVirtual.DelayedCall(4f, () =>
+            {
+                isUnloading = false;
+                unloadingText.gameObject.SetActive(false);
+                signalBus.Fire(new GameEvents.OnScoreChange { company = company, score = Mathf.RoundToInt(totalScore)});
+                totalScore = 0;
+            });
         }
     }
 }

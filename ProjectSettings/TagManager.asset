@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trading
   - Pirate
+  - Harbor
   layers:
   - Default
   - TransparentFX
