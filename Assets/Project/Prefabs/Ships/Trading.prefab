@@ -882,7 +882,7 @@ GameObject:
   - component: {fileID: 2786839506979910219}
   - component: {fileID: 6607517936595865574}
   - component: {fileID: 6806556680662589030}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Trading
   m_TagString: Trading
   m_Icon: {fileID: 0}
@@ -970,6 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf445f6e9e74d45b7b9eeb3f60b8a4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  company: 0
   arrive: {fileID: 1362271726041386718}
   seek: {fileID: 206299972272948313}
   flee: {fileID: 7570037026109578612}
@@ -1085,7 +1086,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

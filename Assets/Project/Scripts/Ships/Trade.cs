@@ -21,6 +21,7 @@ namespace Project.Scripts.Ships
 
         private Controller controller;
         private Harbor currentHarbor;
+        private Harbor ownHarbor;
         private int currentScore;
         private int levelNumber;
         private bool isDocked;
@@ -31,21 +32,39 @@ namespace Project.Scripts.Ships
             controller = GetComponent<Controller>();
             arrive.SetAction(OnArrive);
             Subscribe();
+            if (levelNumber == 10)
+                FindYourHarbor();
             if (levelNumber >= 9)
                 GetBestHarbor();
             else
                 LookForHarbors();
         }
 
-        private void Subscribe()
+        private void FindYourHarbor()
         {
-            signalBus.Subscribe<GameEvents.OnCollision>(FishingCollision);
+            ownHarbor = harbors.Find(harbor => harbor.GetCompany() == company);
         }
 
-        private void FishingCollision(GameEvents.OnCollision signal)
+        private void Subscribe()
+        {
+            signalBus.Subscribe<GameEvents.OnCollision>(OnCollision);
+        }
+
+        private void OnCollision(GameEvents.OnCollision signal)
         {
             if (!signal.collided.Equals(gameObject)) return;
-            Death();
+            if (levelNumber == 10)
+                Respawn();
+            else
+                Death();
+        }
+
+        private void Respawn()
+        {
+            var respawn = ownHarbor.GetRespawnPosition().position;
+            transform.position = new Vector3(respawn.x, transform.position.y, respawn.z);
+            signalBus.Fire(new GameEvents.OnScoreChange { company = company, score = -10 });
+            GetBestHarbor();
         }
 
         private void LookForHarbors()
@@ -71,7 +90,7 @@ namespace Project.Scripts.Ships
                 {
                     if (levelNumber >= 9)
                     {
-                        signalBus.Fire(new GameEvents.OnScoreChange{company = company, score = currentScore});
+                        signalBus.Fire(new GameEvents.OnScoreChange { company = company, score = currentScore });
                         GetBestHarbor();
                     }
                     else
@@ -130,8 +149,8 @@ namespace Project.Scripts.Ships
 
         public void Death()
         {
-            if(levelNumber >= 9)
-                signalBus.Fire(new GameEvents.OnTradeShipDestroy {company = company});
+            if (levelNumber >= 9)
+                signalBus.Fire(new GameEvents.OnTradeShipDestroy { company = company });
             else
             {
                 signalBus.Fire(new GameEvents.OnGameEnd());
@@ -139,10 +158,10 @@ namespace Project.Scripts.Ships
                 Destroy(gameObject);
             }
         }
-        
+
         private void Unsubscribe()
         {
-            signalBus.TryUnsubscribe<GameEvents.OnCollision>(FishingCollision);
+            signalBus.TryUnsubscribe<GameEvents.OnCollision>(OnCollision);
         }
 
         private bool CheckLevel(int activation)

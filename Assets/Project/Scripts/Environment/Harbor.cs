@@ -10,10 +10,10 @@ namespace Project.Scripts.Environment
         [Inject] private SignalBus signalBus;
 
         [SerializeField] private Company.CompanyName company;
+        [SerializeField] private Transform respawnPosition;
         [SerializeField] private Transform dockingPosition;
         [SerializeField] private float destructionRange;
         [SerializeField] private LayerMask pirateLayer;
-
         private bool isFull;
 
         public bool IsFull()
@@ -36,12 +36,21 @@ namespace Project.Scripts.Environment
         public Transform GetDockingPosition()
         {
             return dockingPosition;
+        }        
+        public Transform GetRespawnPosition()
+        {
+            return respawnPosition;
         }
 
         private void OnDrawGizmos()
         {
             Gizmos.color = new Color(1f, 0f, 0f, 0.3f);
             Gizmos.DrawSphere(transform.position, destructionRange);
+        }
+        
+        public Company.CompanyName GetCompany()
+        {
+            return company;
         }
     }
 }
