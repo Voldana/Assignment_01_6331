@@ -18,10 +18,20 @@ namespace Project.Scripts.Ships
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.gameObject.CompareTag("Trading")) return;
-            var trade = other.gameObject.GetComponent<Trade>();
-            if(!trade) return;
-            trade.Death();
+            if (!other.gameObject.CompareTag("Trading") && !other.gameObject.CompareTag("Player")) return;
+            if (other.gameObject.CompareTag("Trading"))
+            {
+                var trade = other.gameObject.GetComponent<Trade>();
+                if(!trade) return;
+                trade.OnCapture();
+            }
+            else if (other.gameObject.CompareTag("Player"))
+            {
+                var player = other.gameObject.GetComponent<Player.PlayerController>();
+                if(!player) return;
+                player.OnCapture();
+            }
+                
         }
     }
 }

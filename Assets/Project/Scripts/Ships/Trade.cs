@@ -147,7 +147,15 @@ namespace Project.Scripts.Ships
             if (currentHarbor) SetTarget(currentHarbor.GetDockingPosition());
         }
 
-        public void Death()
+        public void OnCapture()
+        {
+            if (levelNumber == 10)
+                Respawn();
+            else
+                Death();
+        }
+
+        private void Death()
         {
             if (levelNumber >= 9)
                 signalBus.Fire(new GameEvents.OnTradeShipDestroy { company = company });

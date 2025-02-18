@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Project.Scripts.Environment;
+using Project.Scripts.Ships;
+using UnityEngine;
 using Zenject;
 
 namespace Project.Scripts.Player
@@ -7,8 +9,10 @@ namespace Project.Scripts.Player
     {
         [Inject] private SignalBus signalBus;
         
+        [SerializeField] private Company.CompanyName company;
         [SerializeField] private float moveSpeed = 10f;
         [SerializeField] private float turnSpeed = 100f;
+        [SerializeField] private Harbor harbor;
 
         private bool isUnloading;
         private int score;
@@ -19,6 +23,8 @@ namespace Project.Scripts.Player
             Subscribe();
         }
 
+
+
         private void Subscribe()
         {
             signalBus.Subscribe<GameEvents.OnCollision>(OnCollision);
@@ -27,7 +33,7 @@ namespace Project.Scripts.Player
         private void OnCollision(GameEvents.OnCollision signal)
         {
             if (!signal.collided.Equals(gameObject)) return;
-            Debug.Log("Player collided");
+            OnCapture();
         }
 
         private void Update()
@@ -44,6 +50,13 @@ namespace Project.Scripts.Player
         public Vector3 GetVelocity()
         {
             return velocity;
+        }
+
+        public void OnCapture()
+        {
+            var respawn = harbor.GetRespawnPosition().position;
+            transform.position = new Vector3(respawn.x, transform.position.y, respawn.z);
+            signalBus.Fire(new GameEvents.OnScoreChange { company = company, score = -10 });
         }
 
         private void OnTriggerEnter(Collider other)
