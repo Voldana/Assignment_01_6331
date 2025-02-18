@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,17 +8,22 @@ namespace Project.Scripts.Steering
     {
         [SerializeField] private float maxRotation = 20f;
         [SerializeField] private float maxSpeed = 50f;
-        [SerializeField] private float drag = 0.1f; 
+        [SerializeField] private float drag = 0.1f;
 
         private Vector3 velocity = Vector3.zero;
         private float speedLimit = 1;
         private float rotation;
+        private Base[] behaviors;
+
+        private void Start()
+        {
+            behaviors = GetComponents<Base>();
+        }
 
         private void Update()
         {
             var totalSteering = new SteeringOutput();
-
-            var behaviors = GetComponents<Base>();
+            
             foreach (var behavior in behaviors)
             {
                 var steering = behavior.GetSteering();
@@ -35,7 +41,7 @@ namespace Project.Scripts.Steering
             rotation = Mathf.Clamp(rotation, -maxRotation, maxRotation);
             velocity.y = 0;
             transform.position += velocity * (speedLimit * Time.deltaTime);
-            
+
             if (!(velocity.magnitude > 0.1f)) return;
             var targetRotation = Quaternion.LookRotation(velocity.normalized);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 2.5f);
@@ -52,4 +58,3 @@ namespace Project.Scripts.Steering
         }
     }
 }
-

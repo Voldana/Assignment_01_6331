@@ -4,9 +4,9 @@ namespace Project.Scripts.Steering
 {
     public class LookAt: Base
     {
-        public float targetAngularSpeed = 5f; // Max rotation speed
-        public float alignRadius = 5f; // When to start slowing rotation
-        public float slowRadius = 15f; // Smooth rotation transition
+        public float targetAngularSpeed = 5f; 
+        public float alignRadius = 5f; 
+        public float slowRadius = 15f; 
 
         public override SteeringOutput GetSteering()
         {

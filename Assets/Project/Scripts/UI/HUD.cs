@@ -55,8 +55,8 @@ namespace Project.Scripts.UI
 
         private void SetTimer()
         {
-            UpdateClock(60);
-            timer = new Timer(60, UpdateClock, OnTimerEnd);
+            UpdateClock(300);
+            timer = new Timer(300, UpdateClock, OnTimerEnd);
             timer.Start();
         }
 

@@ -23,7 +23,7 @@ namespace Project.Scripts.UI
 
         public void OnRetry()
         {
-            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         
 
