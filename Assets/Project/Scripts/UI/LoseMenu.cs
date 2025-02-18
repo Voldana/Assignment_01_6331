@@ -10,30 +10,26 @@ namespace Project.Scripts.UI
     {
         [SerializeField] private TMP_Text reasonText, scoreText;
         
-        [Inject] private LossDetails lossDetails;
+        [Inject] private Leaderboard leaderboard;
+        [Inject] private string reason;
         
         private void Start()
         {
             DOTween.KillAll();
-            reasonText.text = lossDetails.reason;
-            scoreText.text += $" {lossDetails.score}";
+            reasonText.text = reason;
+            if(!leaderboard) return;
+            scoreText.text += $"\n Winner is {leaderboard.GetWinner().company} With {leaderboard.GetWinner().score} points!";
         }
 
         public void OnRetry()
         {
             Time.timeScale = 1;
-            SceneManager.LoadSceneAsync(lossDetails.level);
         }
         
 
-        public class Factory : PlaceholderFactory<LossDetails, LoseMenu>
+        public class Factory : PlaceholderFactory<string,Leaderboard, LoseMenu>
         {
         }
     }
-    public struct LossDetails
-    {
-        public string reason;
-        public int score;
-        public int level;
-    }
+
 }

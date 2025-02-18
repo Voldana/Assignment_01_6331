@@ -47,13 +47,16 @@ namespace Project.Scripts
             return companyDatas.Find(data => data.company == company).score;
         }
 
-        public KeyValuePair<Company.CompanyName, int> GetWinner()
+        public CompanyData GetWinner()
         {
-            var topScore = new KeyValuePair<Company.CompanyName, int>(Company.CompanyName.Blue, 0);
-            /*foreach (var entry in scores.Where(entry => entry.Value > topScore.Value))
-                topScore = entry;*/
+            CompanyData winner = companyDatas[0];
 
-            return topScore;
+            foreach (var data in companyDatas.Where(data => data.score > winner.score))
+            {
+                winner = data;
+            }
+
+            return winner;
         }
     }
 

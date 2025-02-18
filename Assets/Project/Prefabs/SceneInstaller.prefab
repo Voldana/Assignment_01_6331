@@ -50,3 +50,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   levelMenu: {fileID: 554421071184180168, guid: 4305b610cbe62764f94561b2aa97dc0e, type: 3}
+  loseMenu: {fileID: 457437162475872927, guid: 53448987f6e68294ebc9a45ed48aaf41, type: 3}

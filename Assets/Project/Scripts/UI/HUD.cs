@@ -10,13 +10,14 @@ namespace Project.Scripts.UI
 {
     public class HUD : MonoBehaviour
     {
+        [SerializeField] private Leaderboard leaderboard;
         [SerializeField] private TMP_Text scoreText;
         [SerializeField] private TMP_Text clock;
-
+        
         [Inject] private LevelMenu.Factory levelFactory;
+        [Inject] private LoseMenu.Factory loseFactory;
         [Inject] private SignalBus signalBus;
-
-        private bool timeEnded;
+        
 
         private Timer timer;
 
@@ -49,21 +50,13 @@ namespace Project.Scripts.UI
             timer.Stop();
             Time.timeScale = 0;
             DOTween.KillAll();
-            DOVirtual.DelayedCall(1.5f, () =>
-            {
-                /*loseFactory.Create(new LossDetails()
-                {
-                    /*score = score,
-                    reason = "",
-                    level = levelSetting.level#1#
-                }).transform.SetParent(transform.parent, false);*/
-            });
+            loseFactory.Create("Game Ended!",leaderboard).transform.SetParent(transform.parent, false);
         }
 
         private void SetTimer()
         {
-            UpdateClock(300);
-            timer = new Timer(300, UpdateClock, OnTimerEnd);
+            UpdateClock(60);
+            timer = new Timer(60, UpdateClock, OnTimerEnd);
             timer.Start();
         }
 
@@ -79,7 +72,6 @@ namespace Project.Scripts.UI
 
         private void OnTimerEnd()
         {
-            timeEnded = true;
             timer.Stop();
             ShowLoseScreen();
         }
